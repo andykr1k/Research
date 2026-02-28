@@ -1,0 +1,23 @@
+#+title: Advancing Aerospace Autonomy with Foundation Models
+
+* Background
+** Presenter: Daniele Gammelli
+** School: Stanford
+
+* Motivation
+** Agency and Embodiment present unique challenges for AI
+*** Safety and Reliability
+*** Data-limited environments
+*** Compute Constraints
+**
+
+* Research
+** Enabling AI based autonomy in high stakes environments
+*** Safety and Reliability
+**** Judiciously integrating AI with classical methods
+*** Data-limited environments
+**** Foundation models for autonomy
+*** Compute Constraints
+**** Novel methods and architectures
+** Autonomous Rendezvous Transformer
+*** ART combines optimization based and ai based methogs for spacecraft trajectory optimization

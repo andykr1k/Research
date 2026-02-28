@@ -1,0 +1,63 @@
+#+title: Feb 26, 2026
+
+* How are we going to call functions during generation?
+** Well lets think about the paradigm in the robotics department
+*** Sensing, Reasoning, and Acting
+** Our current LLMs have a reasoning token which is currently called the thinking token
+** Let's build upon this and create an acting token
+** Look more into lora and how this can help me in this process
+
+* Current Idea
+** Think token creates a loop and appends to a prompt until we reach a conclusion which then releases the thinking process from memory
+** Same idea here, we want to create an action token that starts an action process in which we then predict tools and extract from the embedding space
+** The argument generation phase is currently an interesting problem for right now we can just grab the specifications of the tool after grabbing it from an embedding space and have an llm generate the arguments
+*** This is assuming the tool embedding space can't represent arguments
+** After tools get called and results get appended to context, we can remove the tool specifications from memory and continue with thinking or giving an answer
+
+* After some deeper thinking...
+** Lots of this stuff has been done before but putting it together may bring a new paradigm
+** Better Architecture?
+*** Base LLM (Qwen 20B) with LoRA
+**** Trained to do two things:
+***** Normal assistant text
+***** Emit an action boundary when it wants tool help
+**** Add special tokens:
+***** <action_start>, <action_end> <response_start>, <response_end> (Optional) <arg:cmd> or <arg:q>, <arg:...>
+** Inference Flow
+*** Query
+*** Qwen20B + LoRA | tokenizer + embeddings
+**** Thinks
+**** Creates Plan Block
+<plan>
+  <action><len:10>list files</len></action>
+  <action><len:12>search cuda</len></action>
+</plan>
+*** Controller Pauses at </plan>
+**** This takes each action and passes it to the tool embeddings
+*** Tool Embeddings
+**** Retrieve cluster ids
+**** for each intent, top_k (cluster_id, score)
+*** Tool registry
+**** Map exists of cluster ids to tools
+**** grab tool schemas
+*** Argument Generator
+**** Conditioned on user query + intent + selected tool metadata
+**** Outputs dispatch block
+<dispatch>
+  <tool><len:4>grep</len></tool>
+  <opt><len:2>-R</len></opt>
+  <arg><len:6>"cuda"</len></arg>
+  <arg><len:1>.</len></arg>
+</dispatch>
+*** Dispatcher
+**** Takes this block and dispatches commands
+**** gets responses/results from each command
+**** Outputs response block
+<response>
+  <tool><len:4>grep</len></tool>
+  <status><len:4>fail</len></status>
+  <text><len:9>it failed</len></text>
+  <retry><len:4>true</len></retry>
+</response>
+*** LLM
+**** Depending on the response we either retry or we give the user an answer+result

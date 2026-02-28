@@ -1,0 +1,25 @@
+#+title: Next Steps
+
+* Jan 9th 2026
+[x] Find the benchmarks for the three papers in the Journal - AK
+[x] Find the underlying models used for the three papers - AK
+[x] Answer questions under each paper section - AK
+[x] Look at code from the papers - FB
+    - How to map subject nouns to the actual visual tokens?
+    - How to get heatmaps (same as API paper)?
+[ ] Talk to jing to see how he injected new prompts during inference? - FB
+[ ] Figure out our own probing mechanism for visual neglect - AK/FB
+
+* Jan 14th 2026
+[ ] Look at code from the papers - FB
+    - How to get heatmaps (same as API paper)
+[ ] Talk to jing to see how he injected new prompts during inference - FB
+    - Already messaged jing
+[ ] Figure out our own probing mechanism for visual neglect - AK/FB
+[X] V-ITI: How do they scale the attention when neglect detector is activated - AK
+    - Update: Scaling is applied in the cross attention by modifying the logits before the softmax. They have an alpha which is a fixed hyperparam known as the scaling strength. They use logits because it directly controls the attention entropy while preserbing the representational geometry.
+[X] Use API prompting code (Clip/Llava for computing similarity between prompt and image) - AK
+    - Take this piece out and run it standalone
+
+* Jan 19th 2026
+[ ]

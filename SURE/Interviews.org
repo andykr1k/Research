@@ -1,0 +1,153 @@
+#+title: Interviews
+
+* Zhuocheng He - Feb 17th, 7:30 PM
+** Background
+*** U of M - CS Major - Junior
+** Experience/Projects
+*** Currently working on an Openclaw clone - interested in Agents
+**** Using Typescript - Not understanding why?
+*** All special topics projects - works on good projects but is there passion?
+**** Has worked on HPC's specifically Great Lakes and has worked with slurm
+*** Has implemented methods from papers and thought of new ideas but no success in these new ideas
+** Personal Thoughts
+*** Not sure if he understands why he chose typescript instead of Python
+*** Will go back to China (4/30 to 5/20)
+*** Decent communication skills
+** Potential Ranking
+*** Third or Rejected
+
+* Vaman Rajagopal - Feb 17th, 8:00 PM
+** Background
+*** U of M - CS Major - Junior
+*** Thinking of Masters - SUGGS
+** Experience/Projects
+*** VTI Aerospace - Software Engineer
+**** Natural Language to Drone Commands
+*** Michigan Institute for Computational Discovery and Engineering - Software Developer
+**** Web Dev for Data analysis using OpenAI API
+*** Google Dev Group - App Developer
+**** Built an audio journal app
+**** Building apps for non-profits
+*** MRacing - Autonomous Systems Engineer
+**** "Low level" experience - C++
+**** Built a system to find best path around cones
+*** Less research experience more of an engineer but still can be helpful with getting work done quickly and well
+** Personal Thoughts
+*** He kind of has the same thought process I have with being resourceful and getting things up with minimal cost
+*** He has lots of broad experience and can see potential for him to dive in deep and become more proficient in a field
+*** Wants to commit 40 hours a week and can work on weekends if needed
+*** Good communication skills
+** Potential Ranking
+*** First or second (definitely in the pool of acceptances)
+
+* Prisha Swaroop - Feb 17th, 8:30 PM
+** Background
+*** U of M - CS Major - Sophomore
+** Experience/Projects
+*** Xoxoday - Software Engineering Intern
+**** Developing dashboards for a suite of companies
+*** Society of Women Engineers - Professional Excellence Officer
+**** Managing and Marketing
+*** Human Powered Submarine - Outreach Lead
+**** Marketing and Finance
+*** Corso Group - Annotator
+**** Cardiac Surgery Dataset
+**** Works w/ Filippos
+** Personal Thoughts
+*** Less experience with research and AI
+*** Believes she can learn fast
+*** Interested in broader impact
+*** Good communication skills
+** Potential Ranking
+*** Rejected
+
+* Eduardo Lara - Feb 18th, 12:00 PM
+** Background
+*** UT A - CS Major - Junior/Senior
+** Experience/Projects
+*** Backend Developer - Forte Innovation Consulting
+**** Engineered RAG system using openai apis as well as langchain
+**** Worked with Python, Pinecone
+*** Backend Developer
+**** Deployed statistical models for machine failure insights
+**** Worked with Python, Java, AWS
+*** Data Analyst
+**** Automated ETL pipeline using Azure
+**** Worked with SQL and Power BI
+*** Research Assitant
+**** Working with a simple HIL agentic system for emulating cyber attacks
+** Personal Thoughts
+*** Good communication skills
+*** Clear journey tracks well with interests and current projects/experiences
+*** One of the only applicants that researched about the actual project
+*** I would consider a slightly above average cs student
+*** Has some decent experience including working with lots of data, creating
+** Potential Ranking
+*** Second or Third (if allowed from another school)
+
+* Nina Yun - Feb 18th, 12:30 PM
+** Background
+*** U of M - EE Major - Sophomore
+** Experience/Projects
+*** Firmware Subteam - Perioperative Project Team
+**** Created a python based GUI
+**** Worked more on firmware rather than software
+**** Challenges relating to device constraints regarding runnning code on different machines as well as UI design issues (no real solutions all temporary fixes)
+*** Forum Post Topic Classifier
+**** Made a simple classifier for piazza messages
+**** All in C++
+*** Binary Search Tree Map
+**** Implemented in C++
+*** Content Aware Image Resizing
+**** Segmentation via energy per pixel
+** Personal Thoughts
+*** Bad start - can't figure out computer settings
+*** Lower level work is good but not too sure she would be good with working on creating large datasets and evaluating machine learning models as she has no relevant work
+*** Has a lot of activities outside of necessary work
+*** Good communication skills
+** Potential Ranking
+*** Rejected
+
+* Raghav Buddhineni - Feb 18th, 1:00 PM
+** Background
+***  U of M - CS Major - Freshman
+** Experience/Projects
+*** Software Development Intern - Aurus Inc.
+**** Verified software as intalled correctly on different devices and tested software on said devices
+*** Wonderbox - Non-Profit - Founder/CEO
+**** Made care boxes for seniors in senior living
+*** Project Manager - Tech 4 Social Good
+**** Creating a website for the nonprofit
+*** Tech Analyst - Michigan RossTech Plus
+**** Creating a dashboard
+*** Varroa Mite Detection Research
+**** Created a CNN that detects healthy vs unhealthy bees
+**** Some understanding of CNN architecture
+*** Frat Map
+**** Created an IOS app that locates frats on campus using google maps api and so on
+** Personal Thoughts
+*** Definitely interested in AI/ML
+*** Good communication skills
+*** Hobby codes which is great
+** Potential Ranking
+*** Third
+
+* Max Boya Wang - Feb 18th, 1:30 PM
+** Background
+*** U of M - DS Major - Sophomore
+** Experience/Projects
+*** Research Assistant - Research Center on Fictitious Econ
+**** Data Processing, Visualization and so on
+*** Research Intern - Alibaba
+**** Lit Review, Benchmarking and Dataset Curation
+**** Worked on a large team so don't understand true value add
+**** Sounds like more of a data annotator
+*** Intern - Tencent Technology
+**** Authored 6 'Silicon Valley Updates' reports
+** Personal Thoughts
+*** Same sharing issue as other person - lets see if she can fix it and how fast - didnt fix it - quickly gave up
+*** Less experience with programming and software...more on the side of data analysis and understanding
+*** Not enough experience with programming in my opinion
+*** Decent communication skills
+** Potential Ranking
+*** Rejected

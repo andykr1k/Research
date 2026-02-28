@@ -1,0 +1,132 @@
+* Literature Review
+
+** Attend and Excite
+- Model
+  > Diffusion
+
+- Benchmark
+  > Doesn't Matter
+
+- Problem
+  > The method proposed, Attend-and-Excite, is designed to fix a common failure in text-to-image models (like Stable Diffusion) known as "catastrophic neglect," where the model ignores one or more subjects in the text prompt (e.g., asking for "a horse and a dog" but only getting a horse).
+
+- Method
+  > Cross-Attention Monitoring: The method leverages the cross-attention maps inside the diffusion model, which link spatial pixels in the image to specific words (tokens) in the text prompt.
+
+  > Subject "Excitement": It identifies specific "subject tokens" (the nouns/objects you want to appear). During the denoising steps, it calculates an attention score for these tokens. If the attention map shows the model is ignoring a subject (low activation), the method computes a gradient to shift the latent image representation, effectively "exciting" or strengthening the model's attention toward that neglected token.
+
+- Result
+  > This forces the model to attend to all subject tokens, ensuring every object mentioned in the prompt actually appears in the final image. It also helps with attribute binding (making sure the right color
+  goes to the right object).
+
+- Questions
+  > How do they map the binding between the visual region and the subject tokens?
+   - Is it in the attention computation?
+
+- Answers
+  > Cross-Attention Maps: The method uses the cross-attention layers within the pre-trained UNet network. It averages the maps across all 16 × 16 attention layers and heads to create an aggregated map ($A_t$).
+
+  > Probability Mapping: After removing the influence of the start-of-text token ($\langle sot \rangle$) and applying a Softmax operation, the resulting matrix indicates the probability of a specific textual token being present in a corresponding image patch (the $(i, j)$-th entry).
+
+  > Spatial Link: This processed attention map effectively serves as the binding mechanism, revealing which specific image patches are influenced by which subject tokens (e.g., nouns).
+
+- Reusables
+  > Using cross attention to create the bindings between visual patches and subjects
+
+** Rethinking Cross-Modal Interaction
+- Model
+  > Diffusion
+
+- Benchmark
+  > Doesn't Matter
+
+- Problem
+  > The authors discover that in MM-DiT architectures, the text prompt often fails to guide the image generation effectively due to "token imbalance". Since the model processes image and text tokens in a single sequence, the huge number of image tokens overwhelms the few text tokens. This suppresses the "cross-modal attention" (the model "listening" to the text). Additionally, standard models use static attention weights, failing to recognize that the text is most critical during the early stages of generation (setting the layout) rather than the later stages (refining details).
+
+- Method
+  > Modality-Specific Temperature Scaling: TACA introduces a scaling factor (temperature, $\gamma$) specifically for the visual-to-text attention scores. By increasing this temperature, the method mathematically amplifies the influence of the text tokens, counteracting the imbalance without needing to retrain the whole model.
+
+  > Timestep-Dependent Adjustment: The method applies this amplification dynamically. It boosts the text's influence primarily during the early denoising steps to ensure the correct semantic layout and composition are established first.
+
+  > Parameter Efficiency: TACA is often combined with LoRA (Low-Rank Adaptation) fine-tuning to further enhance alignment with minimal computational overhead.
+
+- Result
+  > This approach improves the model's ability to follow complex prompts, specifically regarding spatial relationships (e.g., "left of"), attribute binding (correct colors on correct objects), and overall shape accuracy.
+
+** V-ITI
+- Model
+  > LLaVA, Qwen-VL, or InstructBLIP
+
+- Benchmark
+  > CHAIR, POPE, HallusionBench, MME, MMBench, VizWiz-VQA, LLaVA-Wild, and MM-Vet
+
+- Problem
+  > The authors argue that hallucinations often stem from "visual neglect," where the model fails to prioritize the input image during generation. Existing methods try to fix this by modifying attention scores or outputs constantly, but this leads to "over-intervention," causing new hallucinations or degrading general performance because they intervene even when it's not necessary.
+
+- Method
+  > Visual Neglect Detector: It uses lightweight "probes" to monitor the model's internal activation patterns (specifically at the attention head level) to detect exactly when the model is ignoring the visual input.
+
+  > Visual Recall Intervenor: Only when visual neglect is detected, this component steps in to modulate the activations, injecting "prestored visual activation information" to force the model to recall and focus on the image features.
+
+- Result
+  > By intervening only when necessary, V-ITI effectively reduces vision-related hallucinations while preserving the model's general performance on other tasks.
+
+- Question:
+  > How was the visual neglect detector implemented?
+
+- Answer:
+  > Construction of a Contrastive "Neglect" Dataset
+    - To train the detector, the authors first needed to simulate the internal state of a model that is ignoring visual information. They achieved this by creating a contrastive dataset consisting of paired samples: a "clean" set containing standard image-text inputs where the model functions normally, and a "perturbed" set where the images are corrupted using heavy visual noise (such as Gaussian noise). This visual corruption effectively removes useful visual signals, forcing the model to rely solely on its language priors (hallucination) to generate answers; the difference in internal activations between processing the clean image and the corrupted image serves as the ground truth for "attending" versus "neglecting".
+
+  > Training Linear Probes and Selecting Informative Heads:
+    - The detector is not a single external model, but rather a collection of lightweight linear classifiers (probes) attached to the specific attention heads of the LLM. The authors train a separate linear probe for every attention head in the model to distinguish between the activations produced by the clean samples and those produced by the perturbed samples. Once trained, they evaluate the accuracy of every head and select only the top-performing subset (the "top-$\beta$ heads")—those that are most sensitive to the presence or absence of visual information—to act as the active neglect detectors, discarding the less informative heads to maintain efficiency.
+
+  > Real-Time Monitoring and Thresholding During Inference:
+    - During the actual generation of text (inference time), the selected probes actively monitor the output vectors of their respective attention heads at every token step. Each probe calculates a probability score indicating how likely it is that the current head is in a state of "neglect" (similar to the perturbed state from training); if this probability exceeds a pre-defined threshold (typically set to 0.5), the detector flags the current step as a visual hallucination, instantly triggering the intervention mechanism to steer the model's attention back toward the visual features.
+
+* Attention Scaling Intervention Ideas
+** Model
+>
+
+** Benchmark
+>
+
+** Problem
+> Despite strong multimodal representations, vision-language models often under-attend to critical visual tokens, leading to incomplete or inaccurate descriptions. This issue is especially pronounced when the model implicitly prioritizes linguistic priors over visual evidence. The goal of this work is to dynamically scale attention to specific visual tokens, regions, or patches only when necessary, rather than applying constant or global intervention. “Necessity” is determined by internal uncertainty signals (e.g., perplexity spikes, modality imbalance, or attention entropy divergence).
+
+** Proposed Methods
+
+*** Method 1: Perplexity-Gated Visual Attention Scaling (PG-VAS)
+> Monitor token-level perplexity during decoding.
+
+> If perplexity exceeds a predefined or adaptive threshold:
+  > Identify visual tokens with low cross-attention contribution.
+  > Scale their attention logits by a factor alpha > 1
+
+> Resume normal decoding once perplexity stabilizes.
+
+*** Method 2: Attention Entropy Discrepancy Correction (AEDC)
+> Compute entropy of visual attention distributions per layer/head.
+
+> Compare against a learned or empirical baseline.
+
+> When entropy exceeds the threshold:
+  > Apply entropy-reducing scaling (sharpening) to salient visual tokens.
+  > Optionally suppress background or low-activation patches.
+
+*** Method 3: Perplexity-Guided Visual Re-Prompting (PGVR)
+> During decoding, monitor token-level or sequence-level perplexity.
+
+> If perplexity rises above a predefined or adaptive threshold:
+  > Pause generation.
+  > Construct a corrective prompt that explicitly emphasizes visual grounding, e.g.:
+    “Carefully re-examine the image, focusing on the objects, colors, and spatial relationships before continuing.”
+
+> Resume generation using the augmented prompt and the same visual input.
+
+> Optionally repeat if perplexity remains high.
+
+** Current Approach
+***
+***
+*** Visual Prompting
