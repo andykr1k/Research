@@ -1,0 +1,18 @@
+#+title: March 11th 2026
+
+* Jason Meeting
+** Research
+*** Evaluations/Benchmarks
+*** It would be nice to have someone else also working on this project that's not an undergrad or masters
+** Solomon
+*** Generate insightful metrics from user studies
+*** Turn these insights into actionable guidance updates
+*** Implement guidance updates to displays
+*** Collaborate with guidance teams by informing them what was seen as helpful and harmful in the user studies to better their models
+*** Prompting video gen models to create incontext guidance - basically evaluating different video gen models
+** Vigil
+*** What are the current next steps?
+*** jeff + bbn
+** Meetings next week
+*** I saw there were two slots for me regarding talks...vigil/agents?
+*** Am I introducing my agent research?

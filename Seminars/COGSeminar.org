@@ -1,0 +1,12 @@
+#+title: Cog Seminar
+
+* Multilevel Alignment in Aduio-Visual Generation and Learning
+** Speaker: Professor Chenliang Xu
+** Motivation
+*** You don't need visual ques to convey context, you can also use audio
+** Audio-Visual Scene Synthesis
+*** Create audio-visual scenes given audio for specific camera poses
+**** No assumptions made about the environment
+** Dataset
+*** Real World Audio-Visual Scene
+*** Using a cool LG 360 microphone
