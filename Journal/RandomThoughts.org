@@ -1,0 +1,15 @@
+#+title: Random Thoughts
+
+* vLLM
+** Large Contribution: PagedAttention
+*** Instead of using a large chunk of continuous memory to store the kv cache, this method chunks the cache into blocks or otherwise known as pages and stores them efficiently in memory
+*** After this is done, vllm then creates a map that allows the creation of a virtual continuous block for use
+*** Because of this memory efficiency, memroy waste goes nearly to zero depending on whats in memory but it will essentially allows minimize memroy usage
+
+* airLLM
+** Large Contribution:
+*** Load transformers layer by layer into the gpu and then store the activations
+
+* Idea
+** Is there an intersection here that can be tackled...
+** We obviously want to keep the idea of parallel residual processing or the transformer architecture would be useless
