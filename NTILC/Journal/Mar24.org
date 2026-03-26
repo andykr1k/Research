@@ -1,0 +1,5 @@
+#+title: March 24th, 2026
+
+* Meeting w/ Yayuan
+** For first figure, we should show a context to performance graph and there should be a comparison to my method which shows barely to no drop in performance even with a large context
+*** the only issue is the goal is not filling the context but splitting the context so the context rot doesn't reach that performance limit

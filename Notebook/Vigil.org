@@ -1,0 +1,86 @@
+* BBN Dry Run - Issues
+
+** Common
+*** Case Change
+**** We should be able to change within not through a config and restart
+*** Speech to Text - IP
+**** Many words are being confused such as VIGIL 
+*** Pose Estimator
+**** When two people are in view there is an issue distinguishing who is the patient and what pose to track
+**** Laying on your side causes an issue especially when using ultrasound (no rotation)
+**** FPS 1-2 -> 10
+**** No Kalman Filter/Tracking
+*** Probe Tracker
+**** BBN vs. Cornell...it seems BBNs probe tracker is better
+***** We need to choose which one
+**** Pressure tracking for compression
+***** Ideas: Use imu from probe, use depth from realsense or use scale change from ultrasound image (we can use all three for more accurate estimation)
+*** Projection
+**** Need to make this dynamic to the pose of the human rather than static
+**** There are bugs right now with projecting the image onto the body
+*** Agent/VQA/MedPHI
+**** Ultrasound shouldn't have to be on to talk to agent/MedPHI
+**** All models should speak as VIGIL
+**** Maybe we should rename VIGIL to something clever and related to VIGIL
+**** When VQA is spoken to show image if PHI don't show image slot when answering
+*** Static Guidance Display
+**** Images 
+***** Generate 5 images and make a "gif" as a short term solution 
+***** Use wan2.2 for in context video generation
+**** Wording
+***** Change wording to make it easier to follow
+**** Steps (Guidance)
+***** Should we have more detailed steps?
+***** Should we restructure the flow of the procedure?
+***** Should we enumerate the lower level guidance tasks?
+
+** Case Specific
+*** Cardiac Case
+**** Patient Alignment State
+***** Pose Estimator does not give any guidance whatsoever unlike the ll case where it shows where the probe should be
+**** Gross Probe State
+***** Probe tracker is not working...not trained well may need to switch to BBN
+***** We need to remove the text and only keep that on debug view
+**** Fine Probe State
+***** Physical prove movement guidance
+****** Replace probe model
+****** Extremely difficult to follow
+******* Suppress probe movement guidance until there is an ultrasound image
+******* Extremely confusing which direction the probe is facing and how it relates to the physical space
+***** LVEF calculation 
+****** When LVEF is calculated it has a collected timestamp which is not accurate as it increments after LVEF is calculated
+**** Report
+***** LVEF score is wrong
+***** Ultrasound images should be chosen by classifier score
+***** We should have a blurred report for the loading/generation State
+
+** Lower Limb Case
+*** Patient Alignment State
+**** Pose Estimator does not give any guidance whatsoever unlike the ll case where it shows where the probe should be
+**** Pose estimator should automatically switch to the legs rather than focusing on upper body
+*** Gross Probe State
+**** Probe tracker is not working...not trained well may need to switch to BBN
+**** We need to remove the text and only keep that on debug view
+**** "Painting" the pose uses a hard coded right hand rather than tracking the probe
+**** The painting is alittle off when it comes to realsense frame to world frame
+*** Fine Probe State
+**** How accurate is the optical flow?
+**** The frame rate for optical flow is extremely slow 1-2 fps
+**** Progress tracker is wrong and just moves up over time seems to have grown a bias to the timestamp and position of the probe on the body
+**** Projection
+***** Does not follow the true DVT procedure we have seen in the IU studies
+**** Static Guidance here is incorrect according to the DVT studies
+*** Report Stage is missing
+
+** Ideas for May 6th
+*** XRAY Case
+**** Look at MGH protocal
+**** Create small proto-demo 
+*** Better Guidance for existing causes
+**** Yayuan may have to work on icon generation for cardiac and ll
+
+
+** Github
+*** Kanban Tracking
+*** Github actions to issue tracking channel
+*** Assign students and PIs
