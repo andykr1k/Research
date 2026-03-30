@@ -4,7 +4,7 @@
 *** Case Change
 **** We should be able to change within not through a config and restart
 *** Speech to Text - IP
-**** Many words are being confused such as VIGIL 
+**** Many words are being confused such as VIGIL -- ISSUE CREATED
 *** Pose Estimator
 **** When two people are in view there is an issue distinguishing who is the patient and what pose to track
 **** Laying on your side causes an issue especially when using ultrasound (no rotation)
@@ -17,7 +17,7 @@
 ***** Ideas: Use imu from probe, use depth from realsense or use scale change from ultrasound image (we can use all three for more accurate estimation)
 *** Projection
 **** Need to make this dynamic to the pose of the human rather than static
-**** There are bugs right now with projecting the image onto the body
+**** There are bugs right now with projecting the image onto the body -- COMPLETED
 *** Agent/VQA/MedPHI
 **** Ultrasound shouldn't have to be on to talk to agent/MedPHI
 **** All models should speak as VIGIL
@@ -50,7 +50,7 @@
 ***** LVEF calculation 
 ****** When LVEF is calculated it has a collected timestamp which is not accurate as it increments after LVEF is calculated
 **** Report
-***** LVEF score is wrong
+***** LVEF score is wrong  -- ISSUE CREATED
 ***** Ultrasound images should be chosen by classifier score
 ***** We should have a blurred report for the loading/generation State
 
@@ -70,7 +70,7 @@
 **** Projection
 ***** Does not follow the true DVT procedure we have seen in the IU studies
 **** Static Guidance here is incorrect according to the DVT studies
-*** Report Stage is missing
+*** Report Stage is missing  -- ISSUE CREATED
 
 ** Ideas for May 6th
 *** XRAY Case
