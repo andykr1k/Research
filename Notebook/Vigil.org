@@ -79,7 +79,6 @@
 *** Better Guidance for existing causes
 **** Yayuan may have to work on icon generation for cardiac and ll
 
-
 ** Github
 *** Kanban Tracking
 *** Github actions to issue tracking channel
