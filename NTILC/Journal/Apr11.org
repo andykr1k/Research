@@ -1,0 +1,28 @@
+#+title: Apr 11th, 2026
+
+* What needs to be done
+** I need to start writing my paper ASAP
+*** To do this I need to find the angle of why the tool embeddings work
+*** I need to understand how current agents are managing their tool context and how they are calling these tools under the hood
+** I need to run benchmarks on this angle
+** I need to introduce a useful dataset with lots of tools, a benchmark that tests tool selection and argument generation and the open source paradigm
+
+* What I have found
+** SOTA
+*** 
+
+** Angle of paper
+*** Scale of tools?
+**** 
+*** We are reducing the amount of tokens generated for reasoning over tool catalog
+**** Does this increase overall performace? -> this correlates to the paper that states once you reach a certain percentage of the context, the overall performace drops
+*** This one tool embedding can be used in many different harnesses and models
+
+* Questions
+** How well does the space handle hard near-neighbor tools?
+** Can it generalize to newly added tools with few examples?
+** Can hierarchy improve recovery on ambiguous requests?
+** How do I represent multi-tool compositions, not just single-tool intent?
+
+** Benchmarks
+*** 

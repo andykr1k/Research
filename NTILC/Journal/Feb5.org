@@ -1,0 +1,14 @@
+#+title: Feb 5th, 2026
+
+* Log
+** Gave Presentation to COG (High Level Research Overview)
+*** Questions
+**** What's the goal/point?
+**** How are tools represented in the embedding space?
+**** What loss function other than circle loss can be used to create a more structured representative embedding space?
+**** Does StableToolBench have some relativity between function calls that can be made to produce similar results?
+*** Suggestions
+**** Hold out one tool from training and add to test to see how well the representations generalize to new tools
+** Next Steps
+** Create a non-synthetic dataset for tools by scraping RapidAPI, MCP Market and Man Pages
+** Add ability to predict more than one tool at a time for multicall tasks
