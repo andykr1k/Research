@@ -1,0 +1,16 @@
+* Interviews
+
+** Reenu
+*** Background
+**** Has done research which is great but not much management experience
+**** Worked with davinci by tracking fatigue in doctors using gaxe, blinking and smoothness of movements as well as other indicators
+**** Likes flow charts and other management tools
+
+*** Pros
+**** Is passionate and very nice
+**** Seems to have the soft skills for this job "I like getting to know people and understanding how to push them"
+**** Knows ros
+
+*** Cons
+**** Doesn't seem technical enough to help rehaul the system
+**** More of a hardware person than software so doesn't have much experience with AI and how these systems Worked
