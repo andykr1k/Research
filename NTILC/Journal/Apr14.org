@@ -21,7 +21,11 @@
 *** Objective: L_total = CrossEntropy(query -> correct tool)+ lambda * weighted_margin_penalty(on incompatible close negatives)
 *** This prevents the agent from confusing two "Weather" tools if one requires a Lat/Long and the other requires a Zip Code.
 
-
+** Insights for new loss function
+*** It seems this loss is not active most of the time and when it is active the functional loss is extremely small
+*** I think to think about a more general way to accomplish what I want to.
+*** Remember the goal is to push away functional dissimilar but semantically similar objects away
+*** Circle loss does something like this as its using margin right but when training and running these subspaces we are seeing lots of overlap...this can be because the embedding space may be too small but why throw more compute at something that may be able to be optimized
 
 ** Hierarchical Margin Loss
 *** Since my data is "very similar," a fixed margin $m$ is too blunt. If I have a hierarchy (e.g., Search -> Web Search -> Google Search), the loss should enforce smaller distances for sub-categories and larger ones for different categories.
